@@ -1,0 +1,37 @@
+{
+  "scope": "Configuration template; supply actual train manifests. Core audio rewards omit emotion and use a rule controller.",
+  "symbolic_manifest": "../data/symbolic_train.jsonl",
+  "symbolic_ppo_manifest": "../data/symbolic_ppo_train.jsonl",
+  "audio_manifest": "../data/audio_train.jsonl",
+  "guidance_manifest": "../data/guidance_train.jsonl",
+  "paper_config": "paper_training_core.json",
+  "device": "cuda:0",
+  "seed": 123,
+  "max_new_tokens": 512,
+  "guidance_max_new_tokens": 512,
+  "stages": {
+    "symbolic-sft": {
+      "steps": 1000,
+      "epochs": 5,
+      "learning_rate": 1e-05
+    },
+    "audio-sft": {
+      "steps": 1000,
+      "epochs": 5,
+      "learning_rate": 1e-05
+    },
+    "symbolic-ppo": {
+      "steps": 1000,
+      "epochs": 5,
+      "ppo_epochs": 4,
+      "discount_per_unit": 0.95
+    },
+    "audio-ppo": {
+      "steps": 1000,
+      "epochs": 5,
+      "ppo_epochs": 4,
+      "discount_per_unit": 0.98,
+      "audio_window_seconds": 0.4
+    }
+  }
+}

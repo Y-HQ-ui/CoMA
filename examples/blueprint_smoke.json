@@ -1,0 +1,58 @@
+{
+  "global": {
+    "tempo_bpm": 120,
+    "meter": "4/4",
+    "global_key": "C",
+    "style_tags": [
+      "instrumental",
+      "piano"
+    ]
+  },
+  "segments": [
+    {
+      "segment_id": 0,
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "energy": 0.4,
+      "emotion": "calm",
+      "section": "intro",
+      "chords": [
+        "C",
+        "G"
+      ],
+      "tracks": [
+        {
+          "role": "melody",
+          "register": "mid",
+          "density": 0.4,
+          "phrase_function": "theme",
+          "section_role": "support",
+          "track_id": "piano",
+          "midi_program": 0,
+          "pitch_range": []
+        },
+        {
+          "role": "bass",
+          "register": "low",
+          "density": 0.2,
+          "phrase_function": "foundation",
+          "section_role": "support",
+          "track_id": "bass",
+          "midi_program": 32,
+          "pitch_range": []
+        }
+      ],
+      "tempo_bpm": 120,
+      "meter": "4/4",
+      "global_key": "C",
+      "video_prior_5d": {
+        "motion_intensity": 0.3,
+        "cut_density": 0.1,
+        "brightness": 0.5,
+        "color_warmth": 0.6,
+        "visual_novelty": 0.2
+      }
+    }
+  ],
+  "source": "synthetic_smoke_fixture_not_paper_data"
+}
