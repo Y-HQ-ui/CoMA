@@ -1,0 +1,13 @@
+{
+  "transcriber_checkpoint": "MASKED_PATH/resource_012",
+  "evaluator_checkpoint": "gpt-4o-2024-08-06",
+  "prompt": "Evaluate only the anonymous transcribed ABC below. Rate mode, melody, harmony, rhythm, and expression using integers from 1 (poor) to 5 (excellent). Return exactly a JSON object with these five keys. Do not infer a generating system or compare to hidden reference music.",
+  "score_definition": "(mean of five integer ratings in [1,5] - 1) / 4",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 2048,
+    "mt3_python": "MASKED_PATH/resource_013",
+    "mt3_source_root": "MASKED_PATH/resource_014",
+    "mt3_timeout": 600
+  }
+}

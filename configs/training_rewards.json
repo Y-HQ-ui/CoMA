@@ -1,0 +1,48 @@
+{
+  "scope": "CoMA.pdf six audio components; requires local frozen MusicNN graphs and configured LLM Critic",
+  "audio_components": [
+    "motion",
+    "cut",
+    "tonal",
+    "emotion",
+    "novelty",
+    "consistency"
+  ],
+  "initial_weights": {
+    "motion": 0.2,
+    "cut": 0.1,
+    "tonal": 0.15,
+    "emotion": 0.15,
+    "novelty": 0.1,
+    "consistency": 0.3
+  },
+  "symbolic_weights": {
+    "beat": 0.3,
+    "phrase": 0.25,
+    "key": 0.2,
+    "diversity": 0.15,
+    "playability": 0.1
+  },
+  "undefined_correlation": "zero",
+  "emotion_evaluator": "reward.emotion:evaluate_musicnn",
+  "weights": {
+    "mode": "llm",
+    "temperature": 1.0,
+    "rho": 0.1,
+    "floor": 0.0001,
+    "max_step": 0.1,
+    "update_every": 8,
+    "consistency_final_gain": 1.0,
+    "on_error": "error"
+  },
+  "measurements": {
+    "analysis_hz": 100.0,
+    "summary_hz": 2.0,
+    "max_lag_seconds": 0.1,
+    "boundary_tolerance_seconds": 0.1,
+    "phrase_silence_seconds": 0.25,
+    "onset_width_seconds": 0.03,
+    "onset_coefficient": 0.5,
+    "envelope_coefficient": 0.5
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "max_lag_seconds": 0.1,
+  "hcs": {
+    "calibration": "MASKED_PATH/resource_001.json"
+  },
+  "video_path": "MASKED_PATH/resource_002.mp4",
+  "emotion_target": {
+    "source": "mean of silent-video VA annotations; supply measured times and values",
+    "used_target_audio": false,
+    "times": [],
+    "values": []
+  },
+  "backends": {
+    "emotion": {
+      "model_id": "deam-msd-musicnn-2",
+      "embedding_path": "MASKED_PATH/resource_003.pb",
+      "head_path": "MASKED_PATH/resource_004.pb",
+      "output_axes": [
+        "valence",
+        "arousal"
+      ],
+      "output": "model/Identity"
+    },
+    "genre": {
+      "model_id": "genre_tzanetakis-musicnn-msd-1",
+      "embedding_path": "MASKED_PATH/resource_003.pb",
+      "head_path": "MASKED_PATH/resource_005.pb",
+      "logits_output": "REPLACE_WITH_PRE_SOFTMAX_TENSOR_FROM_GRAPH_METADATA"
+    },
+    "clap": {
+      "model_id": "laion/larger_clap_music_and_speech",
+      "model_dir": "MASKED_PATH/resource_006",
+      "segment_seconds": 10.0,
+      "device": "cpu"
+    },
+    "vggish": {
+      "model_id": "vggish",
+      "source_root": "MASKED_PATH/resource_007",
+      "checkpoint": "MASKED_PATH/resource_008.ckpt",
+      "reference_audio": "MASKED_PATH/resource_009.wav",
+      "reference_role": "held_out_evaluation"
+    },
+    "imagebind": {
+      "model_id": "imagebind_huge",
+      "source_root": "MASKED_PATH/resource_010",
+      "checkpoint": "MASKED_PATH/resource_011.pth",
+      "device": "cpu"
+    }
+  }
+}

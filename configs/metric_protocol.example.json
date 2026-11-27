@@ -1,0 +1,7 @@
+{
+  "max_lag_seconds": 0.1,
+  "chroma": {
+    "segment_seconds": 3.0,
+    "frames_per_segment": 32
+  }
+}

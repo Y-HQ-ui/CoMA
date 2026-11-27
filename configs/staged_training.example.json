@@ -1,0 +1,62 @@
+{
+  "scope": "Main six-component reward and LLM controller. Supply training manifests, local checkpoints and evaluator configuration. Steps count optimizer updates; PPO rounds count rollout batches.",
+  "symbolic_manifest": "MASKED_PATH/resource_015.jsonl",
+  "symbolic_ppo_manifest": "MASKED_PATH/resource_016.jsonl",
+  "audio_manifest": "MASKED_PATH/resource_017.jsonl",
+  "guidance_manifest": "MASKED_PATH/resource_018.jsonl",
+  "require_validation": true,
+  "symbolic_validation_manifest": "MASKED_PATH/resource_019.jsonl",
+  "audio_validation_manifest": "MASKED_PATH/resource_020.jsonl",
+  "symbolic_ppo_validation_manifest": "MASKED_PATH/resource_021.jsonl",
+  "guidance_validation_manifest": "MASKED_PATH/resource_022.jsonl",
+  "device": "cuda:0",
+  "seed": 123,
+  "max_new_tokens": 512,
+  "guidance_max_new_tokens": 512,
+  "stages": {
+    "symbolic-sft": {
+      "steps": 6000,
+      "batch_size": 64,
+      "learning_rate": 0.0001,
+      "sft_warmup_fraction": 0.05,
+      "validation_interval": 250,
+      "early_stopping_patience": 6,
+      "prompt_dropout": 0.25,
+      "reference_dropout": 0.25
+    },
+    "audio-sft": {
+      "steps": 4000,
+      "batch_size": 32,
+      "learning_rate": 5e-05,
+      "sft_warmup_fraction": 0.05,
+      "validation_interval": 250,
+      "early_stopping_patience": 6,
+      "prompt_dropout": 0.25,
+      "reference_dropout": 0.25
+    },
+    "symbolic-ppo": {
+      "steps": 4000,
+      "rounds": 500,
+      "rollouts_per_round": 32,
+      "minibatch_size": 16,
+      "learning_rate": 1e-05,
+      "ppo_epochs": 4,
+      "discount_per_unit": 0.95,
+      "validation_interval": 50,
+      "early_stopping_patience": 5
+    },
+    "audio-ppo": {
+      "steps": 8000,
+      "rounds": 1000,
+      "rollouts_per_round": 32,
+      "minibatch_size": 16,
+      "learning_rate": 5e-06,
+      "ppo_epochs": 4,
+      "discount_per_unit": 0.98,
+      "audio_window_seconds": 0.4,
+      "validation_interval": 50,
+      "early_stopping_patience": 5
+    }
+  },
+  "reward_config": "training_rewards.json"
+}
